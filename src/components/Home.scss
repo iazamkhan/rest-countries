@@ -27,4 +27,46 @@
             font-size: 16px;
         }
     }
+
+    .inputs {
+        margin-top: 32px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0 24px;
+
+        .search-box {
+            height: 32px;
+            width: 300px;
+            font-size: 12px;
+            box-shadow: 0px 0px 6px -3px grey;
+            border: none;
+            border-radius: 4px;
+        }
+    }
+
+    .second-box {
+        margin-top: 8px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+
+        .country-card {
+            height: 245px;
+            width: 170px;
+            margin: 24px;
+            box-shadow: 0.5px 0.5px 6px -3px grey;
+
+            .flag-img {
+                height: 110px;
+                width: 170px;
+            }
+        }
+
+        .img {
+            margin: 30px 30px;
+        }
+    }
 }
