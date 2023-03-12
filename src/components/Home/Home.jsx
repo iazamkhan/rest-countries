@@ -4,7 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMoon } from '@fortawesome/free-regular-svg-icons'
 import { faMagnifyingGlass } from '@fortawesome/free-regular-svg-icons'
 import axios from 'axios';
-import img from '../assets/flag.png'
+import { Link } from 'react-router-dom'
+import Header from '../Header/Header'
 
 
 function Home() {
@@ -20,13 +21,7 @@ function Home() {
 
     return (
         <div className="main-container">
-            <div className="top-header">
-                <p className="text">Where in the world?</p>
-                <div className="dark-mode-box">
-                    <FontAwesomeIcon icon={faMoon} />
-                    <p className="toggle-text">Dark Mode</p>
-                </div>
-            </div>
+            <Header />
             <div className="inputs">
                 <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
                 <input type="text" className="search-box" placeholder="Search for a country..." />
@@ -37,10 +32,10 @@ function Home() {
             </div>
             <div className="second-box">
                 {countriesData.data?.map(((country, index) =>
-                    (<div className='country-card'><img src={country.flags.png} className="flag-img" alt="flag" /><div style={{ fontSize: '14px', fontWeight: '800', marginTop: '8px'}}>{country.name.common}</div><div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', marginTop: '12px' }}><div style={{fontSize: '12px', fontWeight: 'bold'}}>Population: </div><div style={{ fontSize: '12px', display: 'inline' }}>{country.population}</div></div>
+                    (<Link to={`/country/${country.name.common}`} style={{textDecoration: 'none', color: 'black'}}><div className='country-card'><img src={country.flags.png} className="flag-img" alt="flag" /><div style={{ fontSize: '14px', fontWeight: '800', marginTop: '8px'}}>{country.name.common}</div><div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', marginTop: '12px' }}><div style={{fontSize: '12px', fontWeight: 'bold'}}>Population: </div><div style={{ fontSize: '12px', display: 'inline' }}>{country.population}</div></div>
                     <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', marginTop: '8px' }}><div style={{fontSize: '12px', fontWeight: 'bold'}}>Region: </div><div style={{ fontSize: '12px', display: 'inline' }}>{country.region}</div></div>
                     <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', marginTop: '8px' }}><div style={{fontSize: '12px', fontWeight: 'bold'}}>Capital: </div><div style={{ fontSize: '12px', display: 'inline' }}>{country.capital}</div></div>
-                    </div>)
+                    </div></Link>)
                 ))}
             </div>
         </div>
