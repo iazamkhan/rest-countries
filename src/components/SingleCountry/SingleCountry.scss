@@ -41,5 +41,15 @@
             margin-left: 64px;
             height: 240px;
         }
+
+        .second-column {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            margin-left: 64px;
+            height: 240px;
+            margin-top: -32px;
+        }
     }
 }

@@ -34,7 +34,14 @@ function SingleCountry() {
                         <div style={{ display: 'flex', flexDirection: 'row', justifyContect: 'space-between', alignItems: 'center', height: '24px' }}><h5>Sub Region: &nbsp;&nbsp;</h5><div style={{ fontSize: '12px' }}>{countryData[0]?.subregion}</div></div>
                         <div style={{ display: 'flex', flexDirection: 'row', justifyContect: 'space-between', alignItems: 'center', height: '24px' }}><h5>Capital: &nbsp;&nbsp;</h5><div style={{ fontSize: '12px' }}>{countryData[0]?.capital}</div></div>
                     </div>
-                    <div style={{ display: 'flex', flexDirection: 'row', justifyContect: 'space-between', alignItems: 'center', height: '24px', marginTop: '24px' }}><h5>Border Countries: &nbsp;&nbsp;</h5>{countryData[0]?.borders.map((item, index) => (<div style={{ fontSize: '12px' }}><div style={{border: '1px solid black', height: '15px',  width: '30px', margin: '0 4px'}}>{item[index]}</div></div>))}</div>
+                    <div style={{ display: 'flex', flexDirection: 'row', justifyContect: 'space-between', alignItems: 'center', height: '24px', marginTop: '24px' }}><h5>Border Countries: &nbsp;&nbsp;</h5>{countryData[0]?.borders.map((item) => (<div style={{ fontSize: '12px' }}><div style={{border: '1px solid black', height: '15px',  width: '30px', margin: '0 4px'}}>{item}</div></div>))}</div>
+                </div>
+                <div className='second-column'>
+                    <div>
+                        <div style={{ display: 'flex', flexDirection: 'row', justifyContect: 'space-between', alignItems: 'center', height: '24px' }}><h5>Top Level Domain: &nbsp;&nbsp;</h5><div style={{ fontSize: '12px' }}>{countryData[0]?.tld[0]}</div></div>
+                        <div style={{ display: 'flex', flexDirection: 'row', justifyContect: 'space-between', alignItems: 'center', height: '24px'}}><h5>Currencies: &nbsp;&nbsp;</h5><div style={{ fontSize: '12px' }}>{countryData[0]?.currencies.name}</div></div>
+                        <div style={{ display: 'flex', flexDirection: 'row', justifyContect: 'space-between', alignItems: 'center', height: '24px'}}><h5>Languages: &nbsp;&nbsp;</h5><div style={{ fontSize: '12px' }}>{countryData[0]?.languages.ara}</div></div>
+                    </div>
                 </div>
             </div>
         </div>
