@@ -17,8 +17,29 @@
             margin-bottom: 50px;
             background: none;
             box-shadow: 0px 1px 5px -1px #b8b4b8;
-            margin: 32px 0 0 32px;
+            margin: 48px 0 0 48px;
         }
 
+    }
+
+    .details-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: space-between;
+        margin: 48px 0 0 48px;
+
+        b {
+            font-size: 20px;
+        }
+
+        .first-column {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            margin-left: 64px;
+            height: 240px;
+        }
     }
 }

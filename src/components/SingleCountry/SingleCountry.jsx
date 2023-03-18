@@ -12,16 +12,30 @@ function SingleCountry() {
     const country = useParams();
     useEffect(() => {
         axios.get(`${url}/name/${country.name}`)
-            .then(res => setCountryData(res))
+            .then(res => setCountryData(res.data))
     }, [country])
     console.log(countryData)
     return (
         <div className='main-box'>
             <Header />
             <div className='btn-container'>
-            <button className="back-button">
-                <Link to="/" style={{textDecoration: 'none', color: 'black'}}>&#8592;&nbsp;&nbsp;Back</Link>
-            </button>
+                <button className="back-button">
+                    <Link to="/" style={{ textDecoration: 'none', color: 'black' }}>&#8592;&nbsp;&nbsp;Back</Link>
+                </button>
+            </div>
+            <div className='details-container'>
+                <img src={countryData[0]?.flags.png} alt="flag" width="360px" height="240px" />
+                <div className='first-column'>
+                    <b>{countryData[0]?.name.common}</b>
+                    <div style={{marginTop: '16px'}}>
+                        <div style={{ display: 'flex', flexDirection: 'row', justifyContect: 'space-between', alignItems: 'center', height: '24px' }}><h5>Native Name: &nbsp;&nbsp;</h5><div style={{ fontSize: '12px' }}>{countryData[0]?.name.official}</div></div>
+                        <div style={{ display: 'flex', flexDirection: 'row', justifyContect: 'space-between', alignItems: 'center', height: '24px'}}><h5>Population: &nbsp;&nbsp;</h5><div style={{ fontSize: '12px' }}>{countryData[0]?.population}</div></div>
+                        <div style={{ display: 'flex', flexDirection: 'row', justifyContect: 'space-between', alignItems: 'center', height: '24px' }}><h5>Region: &nbsp;&nbsp;</h5><div style={{ fontSize: '12px' }}>{countryData[0]?.region}</div></div>
+                        <div style={{ display: 'flex', flexDirection: 'row', justifyContect: 'space-between', alignItems: 'center', height: '24px' }}><h5>Sub Region: &nbsp;&nbsp;</h5><div style={{ fontSize: '12px' }}>{countryData[0]?.subregion}</div></div>
+                        <div style={{ display: 'flex', flexDirection: 'row', justifyContect: 'space-between', alignItems: 'center', height: '24px' }}><h5>Capital: &nbsp;&nbsp;</h5><div style={{ fontSize: '12px' }}>{countryData[0]?.capital}</div></div>
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'row', justifyContect: 'space-between', alignItems: 'center', height: '24px', marginTop: '24px' }}><h5>Border Countries: &nbsp;&nbsp;</h5>{countryData[0]?.borders.map((item, index) => (<div style={{ fontSize: '12px' }}><div style={{border: '1px solid black', height: '15px',  width: '30px', margin: '0 4px'}}>{item[index]}</div></div>))}</div>
+                </div>
             </div>
         </div>
     )
