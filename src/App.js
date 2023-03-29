@@ -5,6 +5,7 @@ import SingleCountry from "./components/SingleCountry/SingleCountry";
 
 
 function App() {
+  
   return (
     <div className="App">
       <Routes>
