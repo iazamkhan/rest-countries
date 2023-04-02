@@ -12,8 +12,8 @@ function App() {
   return (
     <div className="App" style={mode ? { color: "white", backgroundColor: "#343a40" } : { color: "black", backgroundColor: "white" }}>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/country/:name" element={<SingleCountry />} />
+        <Route path="/" element={<Home mode={mode}/>} />
+        <Route path="/country/:name" element={<SingleCountry mode={mode}/>} />
       </Routes>
     </div>
   );
