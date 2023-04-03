@@ -1,5 +1,4 @@
-import { React, useState } from 'react'
-import { useLocation } from 'react-router'
+import { React } from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import darkModeActions from '../../actions/darkModeActions'
 import './Header.scss'

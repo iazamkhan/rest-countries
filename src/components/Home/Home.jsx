@@ -36,13 +36,22 @@ function Home({ mode }) {
         }
     }
 
+    const handleSearch = (e) => {
+        const countryName = e.target.value;
+        setNotSelected(false)
+        axios.get(`${apiURL}/name/${countryName}`)
+        .then(res => {
+            setCountriesData(res)
+        })
+    }
+
 
     return (
         <div className="main-container">
             <Header />
             <div className="inputs">
                 <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
-                <input type="text" style={mode ? { backgroundColor: "#495057", boxShadow: "none" } : { backgroundColor: "white", boxShadow: '0.5px 0.5px 6px -3px grey' }} className="search-box" placeholder="Search for a country..." />
+                <input type="text" style={mode ? { backgroundColor: "#495057", boxShadow: "none", color: "white" } : { backgroundColor: "white", boxShadow: '0.5px 0.5px 6px -3px grey' }} className="search-box" placeholder="Search for a country..." onChange={handleSearch}/>
                 <select style={mode ? { backgroundColor: "#495057", boxShadow: "none", color: "white" } : { backgroundColor: "white", boxShadow: '0.5px 0.5px 6px -3px grey', color: "black" }} className="dropdown" onChange={handleChange}>
                     <option value="all">Filter by Region</option>
                     <option value="Africa">Africa</option>
