@@ -10,13 +10,13 @@ function SingleCountry({ mode }) {
     const [countryData, setCountryData] = useState([]);
     const url = 'https://restcountries.com/v3.1';
     const country = useParams();
-    
+
     useEffect(() => {
         axios.get(`${url}/name/${country.name}`)
             .then(res => setCountryData(res.data))
     }, [country])
     console.log(countryData)
-    
+
     return (
         <div className='main-box'>
             <Header />

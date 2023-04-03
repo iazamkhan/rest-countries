@@ -10,14 +10,32 @@ import Header from '../Header/Header'
 
 function Home({ mode }) {
     const [countriesData, setCountriesData] = useState([]);
+    const [notSelected, setNotSelected] = useState(true);
     const url = 'https://restcountries.com/v3.1/all';
+    const apiURL = 'https://restcountries.com/v3.1'
 
     useEffect(() => {
         axios.get(url)
             .then(res => {
                 setCountriesData(res)
             })
-    }, [])
+    }, [notSelected])
+
+    const handleChange = (e) => {
+        const regionName = e.target.value;
+        setNotSelected(false)
+        if (regionName !== "all") {
+            axios.get(`${apiURL}/region/${regionName}`)
+                .then(res => setCountriesData(res))
+        }
+        else {
+            axios.get(url)
+                .then(res => {
+                    setCountriesData(res)
+                })
+        }
+    }
+
 
     return (
         <div className="main-container">
@@ -25,10 +43,13 @@ function Home({ mode }) {
             <div className="inputs">
                 <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
                 <input type="text" style={mode ? { backgroundColor: "#495057", boxShadow: "none" } : { backgroundColor: "white", boxShadow: '0.5px 0.5px 6px -3px grey' }} className="search-box" placeholder="Search for a country..." />
-                <select style={mode ? { backgroundColor: "#495057", boxShadow: "none", color: "white" } : { backgroundColor: "white", boxShadow: '0.5px 0.5px 6px -3px grey', color: "black" }} className="dropdown">
-                    <option value="">Filter by Region</option>
-                    <option value="one">One</option>
-                    <option value="two">two</option>
+                <select style={mode ? { backgroundColor: "#495057", boxShadow: "none", color: "white" } : { backgroundColor: "white", boxShadow: '0.5px 0.5px 6px -3px grey', color: "black" }} className="dropdown" onChange={handleChange}>
+                    <option value="all">Filter by Region</option>
+                    <option value="Africa">Africa</option>
+                    <option value="Americas">Americas</option>
+                    <option value="Asia">Asia</option>
+                    <option value="Europe">Europe</option>
+                    <option value="Oceania">Oceania</option>
                 </select>
             </div>
             <div className="second-box">
